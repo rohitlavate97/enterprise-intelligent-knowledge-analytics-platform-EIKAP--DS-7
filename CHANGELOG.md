@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-08-06
+
+### Added
+- Statistical Analysis module with `HypothesisTester` supporting t-tests, ANOVA, Chi-square, Mann-Whitney U, Kruskal-Wallis, Wilcoxon
+- `NormalityTester` with Shapiro-Wilk, D'Agostino-Pearson, KS tests, and parametric vs non-parametric test auto-selection
+- `CorrelationAnalyzer` for Pearson, Spearman, Kendall tau, and Partial correlation
+- `DistributionFitter` for distribution fitting (norm, expon, lognorm, gamma), AIC/BIC goodness-of-fit, and confidence intervals
+- `StatisticalFeatureSelector` for ANOVA F-classif, Chi2, Mutual Info, and VIF multicollinearity scoring
+- `StatisticalReportGenerator` generating Markdown statistical summary reports
+- `StatisticalAnalysisModule` integration with `EIKAPModule` interface
+- Unit & compliance test suite for statistical analysis (89 total platform tests passing)
+
 ## [0.3.0] - 2026-08-06
 
 ### Added
