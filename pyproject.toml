@@ -2,7 +2,7 @@
 name = "eikap"
 version = "0.1.0"
 description = "Enterprise Intelligent Knowledge & Analytics Platform"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.13"
 authors = [
     {name = "AI Engineer", email = "ai.engineer@example.com"}
 ]
@@ -42,7 +42,8 @@ dependencies = [
     "pyyaml",
     "structlog",
     "tenacity",
-    "shap"
+    "numba>=0.59.0",
+    "shap>=0.45.0"
 ]
 
 [project.optional-dependencies]
