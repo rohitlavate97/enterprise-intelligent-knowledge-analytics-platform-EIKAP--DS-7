@@ -1,0 +1,18 @@
+app:
+  env: production
+  debug: false
+
+logging:
+  level: INFO
+  handlers:
+    - console
+    - file
+
+database:
+  echo: false
+
+api:
+  workers: 8
+
+security:
+  jwt_expire_minutes: 15

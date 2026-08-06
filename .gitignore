@@ -1,0 +1,67 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.eggs/
+
+# C extensions
+*.so
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Environments
+venv/
+.venv/
+env/
+.env_dir/
+
+# Datasets and generated files
+datasets/*.csv
+datasets/*.parquet
+!datasets/.gitkeep
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Model artifacts
+*.pt
+*.pth
+*.onnx
+*.bin
+
+# Type checking and linting
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Logging
+*.log
+logs/*
+!logs/.gitkeep
+
+# Node modules (if any frontend is added)
+node_modules/
+
+# IDEs
+.idea/
+.vscode/*
+!.vscode/settings.json
+*.swp
+*.swo

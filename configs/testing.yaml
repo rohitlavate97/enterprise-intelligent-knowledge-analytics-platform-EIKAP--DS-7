@@ -1,0 +1,18 @@
+app:
+  env: testing
+  debug: true
+
+logging:
+  level: DEBUG
+  handlers:
+    - console
+
+database:
+  url: sqlite:///./eikap_test.db
+  echo: false
+
+redis:
+  url: redis://localhost:6379/15
+
+mlflow:
+  experiment_prefix: eikap_test
