@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-06
+
+### Added
+- Business Analytics module with Matplotlib & Plotly dual-engine chart rendering
+- Chart components: `TrendChart`, `DistributionChart`, `CorrelationChart`, `FeatureImportanceChart`, and `ChartExporter` (PNG, SVG, HTML, base64)
+- `KPIDashboard` computing SaaS/Enterprise metrics: MRR, ARR, CAC, LTV, LTV:CAC, ARPU, Churn Rate, Conversion Rate, NPS
+- `CustomerAnalytics` with RFM segmentation, cohort retention matrix, and CLV distribution
+- `SalesAnalytics` with revenue breakdown by region/category, sales rep performance, discount impact, and funnel analysis
+- `ExecutiveReportGenerator` producing GitHub-flavored Markdown and standalone styled HTML reports
+- Real-time KPI refresh engine: `KPIStreamer` WebSocket publisher and `LiveKPIPublisher`
+- `BusinessAnalyticsModule` integration with `EIKAPModule` interface
+- Unit & compliance test suite for analytics (69 total platform tests passing)
+
 ## [0.2.0] - 2026-08-06
 
 ### Added
