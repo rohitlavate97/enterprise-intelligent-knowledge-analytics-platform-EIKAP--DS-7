@@ -3,6 +3,8 @@ Trend charting module.
 """
 from typing import List, Any, Optional, Union
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
