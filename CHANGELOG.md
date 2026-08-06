@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-08-07
+
+### Added
+- Recommendation Engine module with `CollaborativeRecommender` (TruncatedSVD matrix factorization, User-based/Item-based CF)
+- `ContentBasedRecommender` (TF-IDF metadata similarity embeddings & user profile feature aggregation)
+- `HybridRecommender` (Standard maturity — weighted CF + CB score fusion, cold-start popularity fallback mitigation)
+- `RecommendationEvaluator` (Precision@K, Recall@K, MAP@K, NDCG@K ranking evaluation metrics)
+- `RecommendationModule` integration with `EIKAPModule` interface
+- Unit & compliance test suite for recommendation module (148 total platform tests passing)
+
 ## [0.8.0] - 2026-08-07
 
 ### Added
