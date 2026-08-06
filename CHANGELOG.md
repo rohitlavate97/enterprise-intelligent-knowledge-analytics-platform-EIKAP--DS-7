@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-08-07
+
+### Added
+- Deep Learning module with `TabularDataset` and `create_data_loaders` for PyTorch tabular pipelines
+- PyTorch Neural Network architectures: `TabularMLP`, `TabularResNet`, and `CategoricalEmbeddingNet` (Entity Embeddings)
+- `PyTorchTrainer` with `EarlyStopping`, LR scheduling (`ReduceLROnPlateau`), CPU/CUDA auto-device management, and model checkpointing
+- `DeepLearningModule` integration with `EIKAPModule` interface
+- Unit & compliance test suite for deep learning (115 total platform tests passing)
+
 ## [0.5.0] - 2026-08-06
 
 ### Added
