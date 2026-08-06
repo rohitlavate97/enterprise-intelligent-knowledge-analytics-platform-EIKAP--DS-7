@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-08-07
+
+### Added
+- Computer Vision & Image Analytics module with `ImagePreprocessor` (resizing, grayscale, ImageNet normalization, Gaussian blur, Otsu thresholding)
+- `VisionFeatureExtractor` using pre-trained Torchvision backbones (ResNet18 / MobileNetV3), color histograms, and Canny edge detection
+- `ProductDefectInspector` (Standard maturity — manufacturing scratch, structural anomaly, discoloration detection with bounding box localization)
+- `DocumentOCRParser` (Standard maturity — binarization, contour text region detection, receipt parsing extracting merchant, date, total, line items)
+- `ComputerVisionModule` integration with `EIKAPModule` interface
+- Unit & compliance test suite for computer vision module (138 total platform tests passing)
+
 ## [0.7.0] - 2026-08-07
 
 ### Added
