@@ -86,17 +86,17 @@ class EIKAPModule(ABC):
         
     def validate_input(self, data: Any) -> BaseModel:
         if isinstance(data, dict):
-            return self.input_schema()(**data)
+            return self.input_schema(**data)
         elif isinstance(data, BaseModel):
-            return self.input_schema().model_validate(data.model_dump())
-        return self.input_schema().model_validate(data)
+            return self.input_schema.model_validate(data.model_dump())
+        return self.input_schema.model_validate(data)
         
     def validate_output(self, data: Any) -> BaseModel:
         if isinstance(data, dict):
-            return self.output_schema()(**data)
+            return self.output_schema(**data)
         elif isinstance(data, BaseModel):
-            return self.output_schema().model_validate(data.model_dump())
-        return self.output_schema().model_validate(data)
+            return self.output_schema.model_validate(data.model_dump())
+        return self.output_schema.model_validate(data)
         
     def to_api_response(self, prediction: Any, explanation: Dict[str, Any], latency_ms: float, request_id: str = "unknown") -> Dict[str, Any]:
         schema = BaseOutputSchema(
