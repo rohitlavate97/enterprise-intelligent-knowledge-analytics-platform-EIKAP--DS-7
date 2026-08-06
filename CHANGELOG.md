@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-08-06
+
+### Added
+- Machine Learning module with `BaseMLModel` ABC, joblib model persistence, and MLflow experiment tracking
+- `CustomerChurnModel` (Standard maturity — XGBoost/RandomForest churn prediction with top risk factor extraction)
+- `FraudDetectionModel` (Restricted maturity — LightGBM/XGBoost fraud detection framed strictly as human-investigator recommendations)
+- `CreditRiskModel` (Restricted maturity — Probability-calibrated classifier using `CalibratedClassifierCV` with ECE verification)
+- `MLEvaluator` computing classification metrics (Accuracy, Precision, Recall, F1, ROC-AUC, PR-AUC, Brier score, ECE) and regression metrics (RMSE, MAE, R2)
+- `HyperparameterTuner` supporting GridSearch & RandomSearch cross-validation
+- `MachineLearningModule` integration with `EIKAPModule` interface
+- Unit & compliance test suite for machine learning (104 total platform tests passing)
+
 ## [0.4.0] - 2026-08-06
 
 ### Added
