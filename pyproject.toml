@@ -1,0 +1,87 @@
+[project]
+name = "eikap"
+version = "0.1.0"
+description = "Enterprise Intelligent Knowledge & Analytics Platform"
+requires-python = ">=3.11"
+authors = [
+    {name = "AI Engineer", email = "ai.engineer@example.com"}
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "xgboost",
+    "torch",
+    "torchvision",
+    "transformers",
+    "opencv-python-headless",
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+    "mlflow",
+    "langchain",
+    "langchain-community",
+    "langchain-core",
+    "llama-index",
+    "faiss-cpu",
+    "plotly",
+    "matplotlib",
+    "pydantic>=2.0.0",
+    "pydantic-settings",
+    "python-jose[cryptography]",
+    "passlib[bcrypt]",
+    "celery",
+    "redis",
+    "sqlalchemy",
+    "asyncpg",
+    "psycopg2-binary",
+    "httpx",
+    "websockets",
+    "python-dotenv",
+    "pyyaml",
+    "structlog",
+    "tenacity",
+    "shap"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-asyncio",
+    "ruff",
+    "mypy",
+    "pre-commit"
+]
+test = [
+    "pytest",
+    "pytest-cov",
+    "pytest-asyncio"
+]
+docs = [
+    "mkdocs"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = []
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+ignore_missing_imports = true

@@ -1,0 +1,124 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: eikap_postgres
+    environment:
+      POSTGRES_DB: eikap
+      POSTGRES_USER: eikap
+      POSTGRES_PASSWORD: eikap
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - eikap-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eikap -d eikap"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: eikap_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - eikap-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mlflow:
+    build:
+      context: .
+      dockerfile: docker/mlflow.Dockerfile
+    container_name: eikap_mlflow
+    ports:
+      - "5001:5000"
+    command: >
+      mlflow server
+      --backend-store-uri postgresql://eikap:eikap@postgres:5432/eikap
+      --default-artifact-root /mlartifacts
+      --host 0.0.0.0
+      --port 5000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - mlflow_artifacts:/mlartifacts
+    networks:
+      - eikap-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eikap_app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - EIKAP_ENV=development
+      - POSTGRES_URL=postgresql://eikap:eikap@postgres:5432/eikap
+      - REDIS_URL=redis://redis:6379/0
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mlflow:
+        condition: service_healthy
+    volumes:
+      - ./:/app
+    networks:
+      - eikap-network
+
+  celery-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eikap_celery
+    command: celery -A apps.api.celery_app worker --loglevel=info
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_URL=postgresql://eikap:eikap@postgres:5432/eikap
+      - REDIS_URL=redis://redis:6379/0
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      app:
+        condition: service_started
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./:/app
+    networks:
+      - eikap-network
+    healthcheck:
+      test: ["CMD", "celery", "-A", "apps.api.celery_app", "inspect", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  eikap-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
+  mlflow_artifacts:

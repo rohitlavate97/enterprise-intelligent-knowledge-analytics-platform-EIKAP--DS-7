@@ -1,0 +1,73 @@
+app:
+  name: EIKAP
+  version: 0.1.0
+  description: Enterprise Intelligent Knowledge & Analytics Platform
+  env: ${EIKAP_ENV:development}
+  debug: ${EIKAP_DEBUG:false}
+
+logging:
+  level: ${EIKAP_LOG_LEVEL:INFO}
+  format: json
+  handlers:
+    - console
+    - file
+  file_path: logs/eikap.log
+
+database:
+  url: ${DATABASE_URL:sqlite:///./eikap.db}
+  pool_size: 10
+  max_overflow: 20
+  echo: false
+
+redis:
+  url: ${REDIS_URL:redis://localhost:6379/0}
+  max_connections: 20
+
+mlflow:
+  tracking_uri: ${MLFLOW_TRACKING_URI:http://localhost:5001}
+  artifact_root: ${MLFLOW_ARTIFACT_ROOT:./mlartifacts}
+  experiment_prefix: eikap
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  workers: 4
+  cors_origins:
+    - http://localhost:3000
+    - http://localhost:8000
+  rate_limit:
+    default: 100/minute
+    prediction: 50/minute
+    rag: 30/minute
+
+security:
+  secret_key: ${EIKAP_SECRET_KEY:change-me}
+  jwt_algorithm: ${EIKAP_JWT_ALGORITHM:HS256}
+  jwt_expire_minutes: ${EIKAP_JWT_EXPIRE_MINUTES:30}
+  allowed_upload_extensions:
+    - .csv
+    - .xlsx
+    - .json
+    - .parquet
+    - .pdf
+    - .docx
+    - .md
+    - .png
+    - .jpg
+    - .jpeg
+  max_upload_size_mb: 100
+
+modules:
+  compliance:
+    enforce: true
+    fail_on_violation: true
+  latency_targets_ms:
+    fraud_detection: 100
+    credit_risk: 100
+    churn_prediction: 200
+    product_recommendation: 200
+    sentiment_analysis: 300
+    document_search: 500
+    knowledge_assistant: 1000
+    image_classification: 500
+    ocr: 1000
