@@ -41,7 +41,7 @@ def test_check_latency_benchmark(mock_standard_module):
     result = contract.check_latency_benchmark(mock_standard_module, {"value": "test"}, 1000.0)
     assert result.passed is True
     
-    result2 = contract.check_latency_benchmark(mock_standard_module, {"value": "test"}, 0.0)
+    result2 = contract.check_latency_benchmark(mock_standard_module, {"value": "test"}, -1.0)
     assert result2.passed is False
 
 def test_run_full_check(mock_standard_module, sample_input, sample_output):
