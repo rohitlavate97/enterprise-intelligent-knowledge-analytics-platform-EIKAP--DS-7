@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-08-07
+
+### Added
+- Natural Language Processing & Text Analytics module with `TextPreprocessor` and `TextEmbedder` (TF-IDF & dense embeddings)
+- `TopicModeler` implementing Scikit-Learn LDA & NMF topic extraction
+- `SentimentAnalyzer` (Standard maturity — VADER/lexicon hybrid sentiment and aspect-based sentiment)
+- `ResumeScreener` (Restricted maturity — skill matching, job scoring, fairness audit check for gender/age/location proxies, recruiter-framed recommendations)
+- `SupportTicketClassifier` (Standard maturity — category routing, urgency scoring, error/account entity extraction)
+- `NLPModule` integration with `EIKAPModule` interface
+- Unit & compliance test suite for NLP module (128 total platform tests passing)
+
 ## [0.6.0] - 2026-08-07
 
 ### Added
